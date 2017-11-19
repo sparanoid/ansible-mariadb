@@ -17,6 +17,16 @@
   tags:
     - mysql
 
+- name: install mysql bridges
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ mysql_bridges }}"
+  notify:
+    - restart mysql
+  tags:
+    - mysql
+
 - name: enable mysql
   service:
     name: mariadb
