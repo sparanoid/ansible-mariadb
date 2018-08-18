@@ -7,6 +7,13 @@
   when: mysql_root_password == "my!mySQLpassw0rd@"
   tags: debug
 
+- name: uninstall mariadb-libs (postfix dep) for compatibility workaround
+  yum:
+    name: mariadb-libs
+    state: absent
+  tags:
+    - mysql
+
 - name: install mysql
   yum:
     name: "{{ item }}"
