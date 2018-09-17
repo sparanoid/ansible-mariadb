@@ -14,7 +14,7 @@
   tags:
     - mysql
 
-- name: install mysql
+- name: install mariadb
   yum:
     name: "{{ item }}"
     state: present
@@ -24,7 +24,7 @@
   tags:
     - mysql
 
-- name: install mysql bridges
+- name: install mariadb bridges
   yum:
     name: "{{ item }}"
     state: present
@@ -34,7 +34,7 @@
   tags:
     - mysql
 
-- name: enable mysql
+- name: enable mariadb
   service:
     name: mariadb
     state: started
@@ -42,7 +42,7 @@
   tags:
     - mysql
 
-- name: update mysql root password credentials
+- name: update mariadb root password credentials
   mysql_user:
     name: root
     host: localhost
@@ -59,7 +59,7 @@
   tags:
     - mysql
 
-- name: update mysql root password for all root accounts
+- name: update mariadb root password for all root accounts
   mysql_user:
     name: root
     host: "{{ item }}"
@@ -73,7 +73,7 @@
   tags:
     - mysql
 
-- name: delete anonymous and test mysql users
+- name: delete anonymous and test mariadb users
   mysql_user:
     name: "{{ item }}"
     state: absent
@@ -83,7 +83,7 @@
   tags:
     - mysql
 
-- name: set mysql parameters
+- name: set mariadb parameters
   lineinfile:
     dest: /etc/my.cnf.d/mariadb-server.cnf
     regexp: '^{{ item.param }} *?='
@@ -101,7 +101,7 @@
     - mysql
     - mysql_config
 
-- name: create mysql databases
+- name: create mariadb databases
   mysql_db:
     db: "{{ item }}"
     state: present
