@@ -95,6 +95,7 @@
     - { param: 'tmp_table_size', value: '32M', pos: '[mysqld]' }
     - { param: 'query_cache_size', value: '128M', pos: '[mysqld]' }
     - { param: 'innodb_buffer_pool_size', value: '384M', pos: '[mysqld]' }
+    - { param: 'max_allowed_packet', value: '256M', pos: '[mysqld]' }
   notify:
     - restart mysql
   tags:
