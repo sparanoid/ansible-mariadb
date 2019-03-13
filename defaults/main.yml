@@ -1,8 +1,16 @@
 ---
-mysql_packages:
+mariadb_packages:
   - mariadb101u-devel
   - mariadb101u-server
 mysql_bridges:
   - MySQL-python
 mysql_root_password: my!mySQLpassw0rd@
 mysql_databases: []
+mariadb_options:
+  - { option: 'bind-address', value: '127.0.0.1', section: 'server' }
+  - { option: 'max_heap_table_size', value: '32M', section: 'mysqld' }
+  - { option: 'tmp_table_size', value: '32M', section: 'mysqld' }
+  - { option: 'query_cache_size', value: '128M', section: 'mysqld' }
+  - { option: 'innodb_buffer_pool_size', value: '384M', section: 'mysqld' }
+  - { option: 'max_allowed_packet', value: '256M', section: 'mysqld' }
+  - { option: 'max_connections', value: '501', section: 'mysqld' }
