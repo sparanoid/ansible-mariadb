@@ -115,3 +115,5 @@
   with_items: "{{ mysql_databases[inventory_hostname] | default([]) }}"
   tags:
     - mariadb
+    - mariadb_config
+    - mariadb_db
