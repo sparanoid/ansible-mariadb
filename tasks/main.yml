@@ -36,7 +36,7 @@
   service:
     name: mariadb
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - mariadb
 
@@ -100,7 +100,7 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
     mode: 0644
-    no_extra_spaces: yes
+    no_extra_spaces: true
   with_items: "{{ mariadb_options }}"
   notify:
     - restart mariadb
